@@ -444,7 +444,9 @@ class PDO extends BasePDO implements PDOInterface
                 throw new Exception\UnsupportedException('This is not supported by crate.io');
 
             case self::PARAM_STR:
-                throw new Exception\UnsupportedException('This is not supported, please use prepared statements.');
+                // temp fix
+                return str_replace("'", "''", $string);
+                //throw new Exception\UnsupportedException('This is not supported, please use prepared statements.');
 
             default:
                 throw new Exception\InvalidArgumentException('Unknown param type');
